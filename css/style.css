@@ -17,7 +17,7 @@ body {
   transition: transform 0.3s ease;
 
   /* 背景設定 */
-  background-color: #cab683; /* ベース色 */
+  background-color: #d1b67f; /* ベース色 */
   background-image: 
     url('../images/assets/sidebar_top.jpg'),  /* 上部 */
     url('../images/assets/sidebar_bottom.jpg');  /* 下部 */
@@ -29,7 +29,7 @@ body {
 .sidebar ul {
   list-style: none;
   padding: 0;
-  margin: 60px 0 0;
+  margin: 245px 0 0;
 }
 
 .sidebar ul li {
@@ -56,13 +56,17 @@ body {
 
 /* ハンバーガーアイコン */
 .menu-toggle {
-  display: none;
+  display: none; /* PCでは非表示 */
   font-size: 2rem;
   cursor: pointer;
   position: fixed;
   top: 15px;
-  left: 15px;
+  left: 15px; /* 右上にしたいなら right: 15px; に変更 */
   z-index: 1001;
+  color: gray; /* 一旦グレー */
+  background: rgba(255,255,255,0.7); /* 見やすいように背景を少しつけてもOK */
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 /* ===== スマホ対応 ===== */
@@ -72,7 +76,7 @@ body {
   }
 
   .menu-toggle {
-    display: block;
+    display: block; /* SPで表示 */
   }
 
   .sidebar {
