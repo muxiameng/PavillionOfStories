@@ -7,6 +7,11 @@ body {
   overflow: hidden;
 }
 
+/* ヘッダー */
+header {
+  display: none;
+}
+
 /* サイドバー */
 .sidebar {
   width: 250px;
@@ -74,7 +79,12 @@ body {
   body {
     flex-direction: row;
   }
-
+  
+　/* ヘッダー */
+　header {
+  　display: block;
+　}
+  
   .menu-toggle {
     display: block; /* SPで表示 */
   }
@@ -84,6 +94,7 @@ body {
     top: 0;
     left: 0;
     height: 100%;
+    width: 100%;
     transform: translateX(-100%);
     z-index: 1000;
   }
@@ -91,7 +102,12 @@ body {
   .sidebar.open {
     transform: translateX(0);
   }
-
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 450px 0 0;
+  }
   .content {
     flex: 1;
   }
