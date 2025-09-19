@@ -14,37 +14,37 @@ header {
 
 /* サイドバー */
 .sidebar {
-  width: 250px;
-  min-width: 200px;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-
-  /* 背景設定 */
-  background-color: #d1b67f; /* ベース色 */
-  background-image: 
-    url('../images/assets/sidebar_top.jpg'),  /* 上部 */
-    url('../images/assets/sidebar_bottom.jpg');  /* 下部 */
-  background-repeat: no-repeat, no-repeat;
-  background-position: top center, bottom center;
-  background-size: contain, contain; /* 必要なら cover に変更して調整 */
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* 上・中央・下 */
+  height: 100vh;
+  background-color: #d1b67f;
 }
 
-.sidebar ul {
+.sidebar-top img,
+.sidebar-bottom img {
+  width: 100%;
+  display: block;
+}
+
+.sidebar-menu {
+  overflow-y: auto; /* メニューが多いときスクロール */
+  padding: 20px;   /* 画像と被らない余白 */
+}
+
+.sidebar-menu ul {
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin: 245px 0 0;
 }
 
-.sidebar ul li {
-  margin: 15px 0;
+.sidebar-menu li {
+  margin: 10px 0;
 }
 
-.sidebar ul li a {
-  color: #211d3b;
+.sidebar-menu a {
   text-decoration: none;
-  font-size: 1.1rem;
+  color: #211d3b;
+  font-weight: bold;
 }
 
 /* メインコンテンツ */
@@ -81,9 +81,13 @@ header {
   }
   
 　/* ヘッダー */
-　header {
-  　display: block;
-　}
+  header {
+    display: block;
+    position: fixed;   /* 右上や左上に固定 */
+    top: 10px;
+    left: 10px;       /* left:10px; にすれば左上配置 */
+    z-index: 1000;     /* サイドバーやiframeの上に出す */
+  }
   
   .menu-toggle {
     display: block; /* SPで表示 */
