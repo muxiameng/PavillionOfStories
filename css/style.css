@@ -19,8 +19,8 @@ body {
   /* 背景設定 */
   background-color: #cab683; /* ベース色 */
   background-image: 
-    url('../images/meishi_top(1).jpg'),  /* 上部 */
-    url('../images/meishi_top(2).jpg');  /* 下部 */
+    url('../images/assets/sidebar_top.jpg'),  /* 上部 */
+    url('../images/assets/sidebar_bottom.jpg');  /* 下部 */
   background-repeat: no-repeat, no-repeat;
   background-position: top center, bottom center;
   background-size: contain, contain; /* 必要なら cover に変更して調整 */
