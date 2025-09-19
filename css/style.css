@@ -13,7 +13,7 @@ body {
   width: 250px;
   flex-shrink: 0;
   height: 100vh;
-  background-color: #cab683;
+  background-color: #d1b67f;
 }
 
 .sidebar-top img,
@@ -81,6 +81,8 @@ body {
     position: fixed;
     left: 0;
     top: 0;
+    width: 100vw;
+    height: 100vh;
     transform: translateX(0); /* 初期表示は開いている */
     transition: transform 0.3s ease;
     z-index: 1000;
