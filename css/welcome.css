@@ -1,13 +1,23 @@
 #site-title {
   color: #fff;
   font-size: 2.5rem;
+  letter-spacing: 0.25em;
   font-family: 'Yu Mincho', serif;
   position: relative;
   display: inline-block;
 }
 
 /* カーソル */
-#cursor {
+#site-title::after {
+  content: "|";
+  margin-left: 5px;
+  animation: blink 0.8s infinite;
+  color: #fff;
+}
+@keyframes blink {
+  50% { opacity: 0;}
+}
+/*#cursor {
   display: inline-block;
   width: 0.8em;
   margin-left: 4px;
@@ -16,7 +26,7 @@
 }
 @keyframes blink {
   to { border-color: transparent; }
-}
+}*/
 
 /* 震え効果 */
 .shake {
@@ -36,6 +46,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  pointer-events: none;
   color: rgba(255, 120, 120, 0.5);
   filter: blur(1px);
   animation: fadeOut 0.3s forwards;
@@ -44,4 +55,14 @@
 @keyframes fadeOut {
   0% { opacity: 0.8; }
   100% { opacity: 0; }
+}
+
+.wind {
+  animation: wind 0.8s ease-out;
+}
+@keyframes wind {
+  0% { opacity: 1; transform: skewX(0deg); }
+  30% { opacity: 0.92; transform: skewX(-3deg); }
+  60% { opacity: 1; transform: skewX(2deg); }
+  100% {opacity: 1; transform: skewX(0deg); }
 }

@@ -1,4 +1,4 @@
-/*// ===== CONFIG =====
+// ===== CONFIG =====
 const romaji = "touennrou";
 const hira = "とうえんろう";
 const kanji = "灯縁楼";
@@ -57,9 +57,9 @@ async function typeThreeStage() {
   target.classList.remove("wind");
 }
 
-document.addEventListener("DOMContentLoaded", typeThreeStage);*/
+document.addEventListener("DOMContentLoaded", typeThreeStage);
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("site-title");
 
   const seq = ["touennrou", "とうえんろう", "灯縁楼"];
@@ -104,4 +104,4 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   animate();
-});
+});*/
