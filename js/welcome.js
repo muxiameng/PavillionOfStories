@@ -23,10 +23,8 @@ function createAfterimage(target, text) {
 }
 
 const deleteChars = async (count) => {
-  for (let i = 0; i < count; i++) {
-    target.textContent = target.textContent.slice(0, -1);
+    target.textContent = target.textContent.slice(0, -count);
     await delay(80);
-  }
 };
 
 // ===== MAIN =====
