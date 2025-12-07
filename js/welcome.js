@@ -1,4 +1,4 @@
-// ===== CONFIG =====
+/*// ===== CONFIG =====
 const romaji = "touennrou";
 const hira = "とうえんろう";
 const kanji = "灯縁楼";
@@ -57,4 +57,51 @@ async function typeThreeStage() {
   target.classList.remove("wind");
 }
 
-document.addEventListener("DOMContentLoaded", typeThreeStage);
+document.addEventListener("DOMContentLoaded", typeThreeStage);*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  const title = document.getElementById("site-title");
+
+  const seq = ["touennrou", "とうえんろう", "灯縁楼"];
+
+  const delay = (ms) => new Promise(res => setTimeout(res, ms));
+
+  const typeText = async (text) => {
+    title.textContent = ""; 
+    for (let i = 0; i < text.length; i++) {
+      title.textContent = text.slice(0, i + 1);
+      await delay(120);
+    }
+  };
+
+  const afterImage = () => {
+    const ghost = title.cloneNode(true);
+    ghost.classList.add("afterimage");
+    document.body.appendChild(ghost);
+    setTimeout(() => ghost.remove(), 300);
+  };
+
+  const shake = () => {
+    title.classList.add("shake");
+    setTimeout(() => title.classList.remove("shake"), 300);
+  };
+
+  const animate = async () => {
+    const cursor = document.createElement("span");
+    cursor.id = "cursor";
+    title.after(cursor);
+
+    await typeText(seq[0]);
+    await delay(400);
+
+    await typeText(seq[1]);
+    await delay(400);
+
+    await typeText(seq[2]);
+
+    afterImage();
+    shake();
+  };
+
+  animate();
+});
