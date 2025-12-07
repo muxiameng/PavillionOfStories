@@ -5,6 +5,8 @@
   font-family: 'Yu Mincho', serif;
   position: relative;
   display: inline-block;
+  text-align: center;
+  margin: 0 auto;
 }
 
 /* カーソル */

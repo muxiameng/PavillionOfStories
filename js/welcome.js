@@ -39,8 +39,8 @@ async function typeThreeStage() {
   await delay(300);
 
   // 2. ひらがなに変換
-  //target.textContent = target.textContent.slice(0,-romaji[i].length);
-   await deleteChars(romaji[i].length); 
+  target.textContent = target.textContent.slice(0, -romaji[i].length);
+   //await deleteChars(romaji[i].length); 
 
   //for (let char of hira[i].split('')) {
     target.textContent += hira[i];
@@ -49,8 +49,8 @@ async function typeThreeStage() {
   await delay(300);
 
   // 3. 漢字へ変換（震え・残像・風ゆらぎ）
-  //target.textContent = target.textContent.slice(0, -hira[i].length);
-  await deleteChars(hira[i].length);
+  target.textContent = target.textContent.slice(0, -hira[i].length);
+  //await deleteChars(hira[i].length);
   target.textContent += kanji[i];
 }
 
