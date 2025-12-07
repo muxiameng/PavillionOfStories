@@ -1,7 +1,7 @@
 // ===== CONFIG =====
-const romaji = "touennrou";
-const hira = "とうえんろう";
-const kanji = "灯縁楼";
+const romaji = ["tou","enn","rou"];
+const hira = ["とう","えん","ろう"];
+const kanji = ["灯","縁","楼"];
 
 // ===== UTIL =====
 function delay(ms) {
@@ -25,26 +25,28 @@ function createAfterimage(target, text) {
 async function typeThreeStage() {
   const target = document.getElementById("site-title");
 
+  for (let i = 0; i < romaji.length; i++) {
   // 1. ローマ字タイピング
-  for (let char of romaji) {
-    target.textContent += char;
+  //for (let char of romaji) {
+    target.textContent += romaji[i];
     await delay(randomDelay());
-  }
+  //}
   await delay(300);
 
   // 2. ひらがなに変換
   createAfterimage(target, target.textContent);
   target.textContent = "";
 
-  for (let char of hira) {
-    target.textContent += char;
+  //for (let char of hira) {
+    target.textContent += hira[i];
     await delay(randomDelay(50, 130));
-  }
+  //}
   await delay(300);
 
   // 3. 漢字へ変換（震え・残像・風ゆらぎ）
   createAfterimage(target, target.textContent);
-  target.textContent = kanji;
+  target.textContent += kanji[i];
+}
 
   // 震え
   target.classList.add("shake");
