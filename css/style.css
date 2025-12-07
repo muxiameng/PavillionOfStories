@@ -11,7 +11,7 @@ body {
     font-family: "Yu Mincho", serif;
     font-size: 2.4rem;
     letter-spacing: 0.25em;
-    color: #f2e9d8;
+    color: #fff;
     position: relative;
     display: inline-block;
     filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
@@ -22,7 +22,7 @@ body {
     content: "┃";
     margin-left: 5px;
     animation: blink 0.8s infinite;
-    color: #f2e9d8;
+    color: #fff;
   }
   @keyframes blink {
     50% { opacity: 0; }
