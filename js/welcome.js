@@ -2,6 +2,7 @@
 const romaji = ["tou","enn","rou"];
 const hira = ["とう","えん","ろう"];
 const kanji = ["灯","縁","楼"];
+const target = document.getElementById("site-title");
 
 // ===== UTIL =====
 function delay(ms) {
@@ -21,30 +22,35 @@ function createAfterimage(target, text) {
   setTimeout(() => clone.remove(), 400);
 }
 
+const deleteChars = async (count) => {
+  for (let i = 0; i < count; i++) {
+    target.textContent = target.textContent.slice(0, -1);
+    await delay(80);
+  }
+};
+
 // ===== MAIN =====
 async function typeThreeStage() {
-  const target = document.getElementById("site-title");
 
   for (let i = 0; i < romaji.length; i++) {
   // 1. ローマ字タイピング
-  //for (let char of romaji) {
-    target.textContent += romaji[i];
+  for (let char of romaji[i].split('')) {
+    target.textContent += char;
     await delay(randomDelay());
-  //}
+  }
   await delay(300);
 
   // 2. ひらがなに変換
-  createAfterimage(target, target.textContent);
-  target.textContent = "";
+  await deleteChars(romaji[i].length); 
 
-  //for (let char of hira) {
-    target.textContent += hira[i];
+  for (let char of hira[i].split('')) {
+    target.textContent += char;
     await delay(randomDelay(50, 130));
-  //}
+  }
   await delay(300);
 
   // 3. 漢字へ変換（震え・残像・風ゆらぎ）
-  createAfterimage(target, target.textContent);
+  await deleteChars(hira[i].length);
   target.textContent += kanji[i];
 }
 
