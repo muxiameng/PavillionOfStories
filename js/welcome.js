@@ -54,9 +54,6 @@ async function typeThreeStage() {
   await delay(250);
   target.classList.remove("shake");
 
-  await typeText(seq[2]);
-
-  shake();
   afterImage();
   glitch();
 
