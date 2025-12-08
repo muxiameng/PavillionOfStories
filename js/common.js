@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ▼ サイドバー読み込み ▼ */
   if (sidebar) {
-    fetch("/components/sidebar.html")
+    fetch("/PavillionOfStories/components/sidebar.html")
       .then(res => res.text())
       .then(html => {
         sidebar.innerHTML = html;
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ▼ フッター読み込み ▼ */
   if (footer) {
-    fetch("/components/footer.html")
+    fetch("/PavillionOfStories/components/footer.html")
       .then(res => res.text())
       .then(html => {
         footer.innerHTML = html;
