@@ -13,103 +13,54 @@ function randomDelay(min = 60, max = 150) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function createAfterimage(target, text) {
-  const clone = document.createElement("span");
-  clone.textContent = text;
-  clone.classList.add("afterimage");
-  target.parentNode.appendChild(clone);
+const afterImage = () => {
+  const ghost = target.cloneNode(true); // タイトルのコピー
+  ghost.classList.add("afterimage");   // CSSで赤い残像になる
+  document.body.appendChild(ghost);
 
-  setTimeout(() => clone.remove(), 400);
-}
+  setTimeout(() => ghost.remove(), 300); // 0.3秒で消える
+};
 
-const deleteChars = async (count) => {
-    target.textContent = target.textContent.slice(0, -count);
-    await delay(80);
+const glitch = () => {
+  title.setAttribute("data-text", title.textContent);
+  title.classList.add("glitch");
+  setTimeout(() => title.classList.remove("glitch"), 300); // 0.3秒だけ
 };
 
 // ===== MAIN =====
 async function typeThreeStage() {
 
   for (let i = 0; i < romaji.length; i++) {
-  // 1. ローマ字タイピング
-  for (let char of romaji[i].split('')) {
-    target.textContent += char;
-    await delay(randomDelay());
-  }
-  await delay(300);
+    // 1. ローマ字タイピング
+    for (let char of romaji[i].split('')) {
+      target.textContent += char;
+      await delay(randomDelay());
+    }
+    await delay(300);
 
-  // 2. ひらがなに変換
-  target.textContent = target.textContent.slice(0, -romaji[i].length);
-   //await deleteChars(romaji[i].length); 
-
-  //for (let char of hira[i].split('')) {
+    // 2. ひらがなに変換
+    target.textContent = target.textContent.slice(0, -romaji[i].length);
     target.textContent += hira[i];
     await delay(randomDelay(50, 130));
-  //}
-  await delay(300);
+    await delay(300);
 
-  // 3. 漢字へ変換（震え・残像・風ゆらぎ）
-  target.textContent = target.textContent.slice(0, -hira[i].length);
-  //await deleteChars(hira[i].length);
-  target.textContent += kanji[i];
-}
+    // 3. 漢字へ変換（震え・残像・風ゆらぎ）
+    target.textContent = target.textContent.slice(0, -hira[i].length);
+    target.textContent += kanji[i];
+  }
 
   // 震え
   target.classList.add("shake");
   await delay(250);
   target.classList.remove("shake");
 
-  // 風のゆらぎ
-  target.classList.add("wind");
-  await delay(800);
-  target.classList.remove("wind");
+  await typeText(seq[2]);
+
+  shake();
+  afterImage();
+  glitch();
+
 }
 
 document.addEventListener("DOMContentLoaded", typeThreeStage);
 
-/*document.addEventListener("DOMContentLoaded", () => {
-  const title = document.getElementById("site-title");
-
-  const seq = ["touennrou", "とうえんろう", "灯縁楼"];
-
-  const delay = (ms) => new Promise(res => setTimeout(res, ms));
-
-  const typeText = async (text) => {
-    title.textContent = ""; 
-    for (let i = 0; i < text.length; i++) {
-      title.textContent = text.slice(0, i + 1);
-      await delay(120);
-    }
-  };
-
-  const afterImage = () => {
-    const ghost = title.cloneNode(true);
-    ghost.classList.add("afterimage");
-    document.body.appendChild(ghost);
-    setTimeout(() => ghost.remove(), 300);
-  };
-
-  const shake = () => {
-    title.classList.add("shake");
-    setTimeout(() => title.classList.remove("shake"), 300);
-  };
-
-  const animate = async () => {
-    const cursor = document.createElement("span");
-    cursor.id = "cursor";
-    title.after(cursor);
-
-    await typeText(seq[0]);
-    await delay(400);
-
-    await typeText(seq[1]);
-    await delay(400);
-
-    await typeText(seq[2]);
-
-    afterImage();
-    shake();
-  };
-
-  animate();
-});*/

@@ -19,16 +19,6 @@
 @keyframes blink {
   50% { opacity: 0;}
 }
-/*#cursor {
-  display: inline-block;
-  width: 0.8em;
-  margin-left: 4px;
-  border-right: 2px solid #fff;
-  animation: blink 0.8s steps(2, start) infinite;
-}
-@keyframes blink {
-  to { border-color: transparent; }
-}*/
 
 /* 震え効果 */
 .shake {
@@ -51,20 +41,61 @@
   pointer-events: none;
   color: rgba(255, 120, 120, 0.5);
   filter: blur(1px);
-  animation: fadeOut 0.3s forwards;
+  animation: fadeOutAfterimage 0.3s forwards;
 }
 
-@keyframes fadeOut {
+@keyframes fadeOutAfterimage {
   0% { opacity: 0.8; }
   100% { opacity: 0; }
 }
 
-.wind {
-  animation: wind 0.8s ease-out;
+/* グリッチ（バグノイズ） */
+.glitch {
+  position: relative;
 }
-@keyframes wind {
-  0% { opacity: 1; transform: skewX(0deg); }
-  30% { opacity: 0.92; transform: skewX(-3deg); }
-  60% { opacity: 1; transform: skewX(2deg); }
-  100% {opacity: 1; transform: skewX(0deg); }
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #f44; /* 赤ノイズ */
+  clip: rect(0, 900px, 0, 0);
+  animation: glitch-move 0.3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  color: #4af; /* 青ノイズ */
+  animation-duration: 0.35s;
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch-move {
+  0% {
+    clip: rect(0, 900px, 0, 0);
+    transform: translate(0, 0);
+  }
+  20% {
+    clip: rect(10px, 900px, 40px, 0);
+    transform: translate(2px, -1px);
+  }
+  40% {
+    clip: rect(30px, 900px, 80px, 0);
+    transform: translate(-2px, 1px);
+  }
+  60% {
+    clip: rect(60px, 900px, 120px, 0);
+    transform: translate(1px, 0);
+  }
+  80% {
+    clip: rect(20px, 900px, 90px, 0);
+    transform: translate(-1px, 2px);
+  }
+  100% {
+    clip: rect(0, 900px, 0, 0);
+    transform: translate(0, 0);
+  }
 }
