@@ -3,37 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta description="Kinoのポートフォリオサイトです。" >
   <title>灯縁楼 -Pavilion Of Stories-</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/welcome.css">
 </head>
 <body>
   <!-- サイドバー -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-top">
-      <img src="images/assets/sidebar_top.jpg" alt="sidebar top">
-    </div>
-
-    <div class="sidebar-menu">
-      <ul>
-        <li><a href="welcome.html" target="mainFrame" class="sidebar-link">TOP</a></li>
-        <li><a href="illustrations.html" target="mainFrame" class="sidebar-link">ILLUST</a></li>
-        <li><a href="comics/index.html" target="mainFrame" class="sidebar-link">MANGA</a></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-bottom">
-      <img src="images/assets/sidebar_bottom.jpg" alt="sidebar bottom">
-    </div>
-  </aside>
-
-  <!-- ハンバーガーメニュー（SP用） -->
-  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div id="sidebar"></div>
 
   <!-- メイン表示 -->
-  <main class="content">
-    <iframe name="mainFrame" src="welcome.html"></iframe>
-  </main>
+  <h1 id="site-title"></h1>
+  <br >
+  <br >
+  <br >
 
-  <script src="js/main.js"></script>
+  <div class="welcome-container">
+    <section class="welcome-hero">
+      <p class="welcome-desc">
+        一次創作漫画とイラストを中心にした創作サイトです。イラストは二次創作も少しあります。<br>
+        作品の世界観を、お楽しみいただけたら幸いです。
+      </p>
+    </section>
+
+    <section class="welcome-cards">
+      <a href="illustrations.html" class="welcome-card">
+        <span class="card-icon">🎨</span>
+        <span class="card-title">Illustrations</span>
+      </a>
+
+      <a href="comics/index.html" class="welcome-card">
+        <span class="card-icon">📚</span>
+        <span class="card-title">Comics</span>
+      </a>
+
+      <a href="shop/index.html" class="welcome-card">
+        <span class="card-icon">🛍️</span>
+        <span class="card-title">Shop</span>
+      </a>
+    </section>
+
+    <section class="welcome-profile">
+      <h2 class="profile-title">About</h2>
+      <p class="profile-text">
+        個人でイラスト・漫画制作をしています。<br>
+        ファンタジーを中心に創作活動中。<br>
+        和風×中華×ホラーをコンセプトにしてます。
+      </p>
+    </section>
+
+    <section class="welcome-updates">
+      <h2 class="updates-title">Updates</h2>
+      <ul class="updates-list">
+        <li>2025/12/08：本サイトトップページ実装</li>
+      </ul>
+    </section>
+  </div>
+  <!-- フッター -->
+  <div id="footer"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/welcome.js"></script>
 </body>
 </html>

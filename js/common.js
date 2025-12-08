@@ -1,4 +1,52 @@
 const target = document.getElementById("site-title");
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const footer = document.getElementById("footer");
+
+// ===== COMPONENTS FETCH =====
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ▼ サイドバー読み込み ▼ */
+  if (sidebar) {
+    fetch("/components/sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        sidebar.innerHTML = html;
+      });
+  }
+
+  /* ▼ フッター読み込み ▼ */
+  if (footer) {
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        footer.innerHTML = html;
+      });
+  }
+
+});
+
+
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('closed');
+});
+
+// SPのとき、サイドバーリンク押下でメニューを閉じる
+sidebarLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      sidebar.classList.add('closed');
+    }
+  });
+});
+
+// リサイズ時にハンバーガーメニュー表示切り替え
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    sidebar.classList.remove('closed'); // PCは常に開く
+  }
+});
 
 // ===== UTIL =====
 /**
@@ -58,20 +106,21 @@ function startRandomGlitch() {
   // ノイズレイヤーを作成
   const noise = document.createElement("div");
   noise.classList.add("glitch-noise");
-  //target.style.position = "relative";
+  target.style.position = "relative";
   target.appendChild(noise);
 
   function triggerGlitch() {
     // ランダムタイミング
-    const wait = 500 + Math.random() * 3000; // 0.5〜3秒間隔
+    const wait = 500 + Math.random() * 3500;
     setTimeout(() => {
-      noise.style.animation = "glitch-slide 0.25s steps(8)";
+      noise.style.animation = "glitch-slide 0.28s steps(10)";
 
       noise.addEventListener("animationend", () => {
         noise.style.animation = "";
       });
 
       triggerGlitch();
+      afterImage();
     }, wait);
   }
 
