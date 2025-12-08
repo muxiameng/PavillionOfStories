@@ -43,12 +43,37 @@ const glitch = () => {
 /**
  * ランダムでグリッチを発生させる
  */
-function startRandomGlitch() {
-  const randomTime = Math.floor(Math.random() * 3000) + 1500;
+/*function startRandomGlitch() {
+  const randomTime = Math.floor(Math.random() * 5000) + 3000;
   // → 1.5〜4.5秒に一度 glitch が発生
 
   setTimeout(() => {
     glitch();
     startRandomGlitch(); // 再帰でループ
   }, randomTime);
+}*/
+
+function startRandomGlitch() {
+
+  // ノイズレイヤーを作成
+  const noise = document.createElement("div");
+  noise.classList.add("glitch-noise");
+  target.style.position = "relative";
+  target.appendChild(noise);
+
+  function triggerGlitch() {
+    // ランダムタイミング
+    const wait = 500 + Math.random() * 3000; // 0.5〜3秒間隔
+    setTimeout(() => {
+      noise.style.animation = "glitch-slide 0.25s steps(8)";
+
+      noise.addEventListener("animationend", () => {
+        noise.style.animation = "";
+      });
+
+      triggerGlitch();
+    }, wait);
+  }
+
+  triggerGlitch();
 }
