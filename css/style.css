@@ -46,7 +46,7 @@ body {
 /* メインコンテンツ */
 .content {
   flex: 1;
-  background: #221D3D;
+  background: #231e3d;
 }
 
 .content iframe {
@@ -54,68 +54,6 @@ body {
   height: 100%;
   border: none;
 }
-
-/* welcomeページ　 */
-/*#site-title {
-  font-family: "Yu Mincho", serif;
-  font-size: 2.4rem;
-  letter-spacing: 0.25em;
-  color: #fff;
-  position: relative;
-  display: inline-block;
-  filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
-}
-*/
-/* 点滅カーソル */
-/*#site-title::after {
-  content: "┃";
-  margin-left: 5px;
-  animation: blink 0.8s infinite;
-  color: #fff;
-}
-@keyframes blink {
-  50% { opacity: 0; }
-}*/
-
-/* 漢字になった瞬間の震え */
-/*.shake {
-  animation: shake 0.25s ease-out;
-}
-@keyframes shake {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(1px, -1px); }
-  50% { transform: translate(-1px, 1px); }
-  75% { transform: translate(1px, 1px); }
-  100% { transform: translate(0, 0); }
-}*/
-
-/* 一瞬の赤残像用 */
-/*.afterimage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  color: rgba(200, 40, 40, 0.4);
-  filter: blur(1px);
-  animation: fadeOut 0.3s forwards;
-}
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: translate(2px, -2px);
-  }
-}*/
-
-/* 風が抜けるようなゆらぎ（1回だけ実行） */
-/*.wind {
-  animation: wind 0.8s ease-out;
-}
-@keyframes wind {
-  0%   { opacity: 1; transform: skewX(0deg); }
-  30%  { opacity: 0.92; transform: skewX(-3deg); }
-  60%  { opacity: 1; transform: skewX(2deg); }
-  100% { opacity: 1; transform: skewX(0deg); }
-}*/
 
 /* ハンバーガー */
 .menu-toggle {

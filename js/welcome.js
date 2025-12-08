@@ -27,6 +27,17 @@ const glitch = () => {
   setTimeout(() => target.classList.remove("glitch"), 300); // 0.3秒だけ
 };
 
+function startRandomGlitch() {
+  const randomTime = Math.floor(Math.random() * 3000) + 1500;
+  // → 1.5〜4.5秒に一度 glitch が発生
+
+  setTimeout(() => {
+    glitch();
+    startRandomGlitch(); // 再帰でループ
+  }, randomTime);
+}
+
+
 // ===== MAIN =====
 async function typeThreeStage() {
 
@@ -56,6 +67,8 @@ async function typeThreeStage() {
 
   afterImage();
   glitch();
+
+  startRandomGlitch();
 
 }
 
