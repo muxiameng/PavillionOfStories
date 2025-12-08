@@ -43,22 +43,22 @@ const glitch = () => {
 /**
  * ランダムでグリッチを発生させる
  */
-/*function startRandomGlitch() {
+function randomGlitch() {
   const randomTime = Math.floor(Math.random() * 5000) + 3000;
   // → 1.5〜4.5秒に一度 glitch が発生
 
   setTimeout(() => {
     glitch();
-    startRandomGlitch(); // 再帰でループ
+    randomGlitch(); // 再帰でループ
   }, randomTime);
-}*/
+}
 
 function startRandomGlitch() {
 
   // ノイズレイヤーを作成
   const noise = document.createElement("div");
   noise.classList.add("glitch-noise");
-  target.style.position = "relative";
+  //target.style.position = "relative";
   target.appendChild(noise);
 
   function triggerGlitch() {
