@@ -1,9 +1,16 @@
 /* 基本レイアウト */
-body {
+/* ページ全体を縦に積むレイアウトにする */
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: sans-serif;
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
+  flex-direction: column;
 }
 
 /* サイドバー */
@@ -54,6 +61,17 @@ body {
   flex: 1;
   background: #231e3d;
 }
+
+/* フッター */ 
+footer {
+  background: #231e3d; /* content と同じ背景に合わせる */
+  text-align: center;
+  padding: 12px 0;
+  color: #555;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;  /* うっすらラインを付けると締まる */
+}
+
 
 /* ハンバーガー */
 .menu-toggle {
