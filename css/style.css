@@ -14,7 +14,10 @@ body {
   flex-shrink: 0;
   height: 100vh;
   background-color: #d1b67f;
-  opacity: 0;
+  opacity: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .sidebar-top img,
@@ -46,14 +49,10 @@ body {
 
 /* メインコンテンツ */
 .content {
+  margin-left: 250px;
+  padding: 20px;
   flex: 1;
   background: #231e3d;
-}
-
-.content iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
 }
 
 /* ハンバーガー */
