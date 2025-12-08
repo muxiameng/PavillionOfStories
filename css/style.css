@@ -9,7 +9,7 @@ html, body {
 body {
   font-family: sans-serif;
   display: flex;
-  /* height: 100vh; */
+  height: 100vh;
   flex-direction: column;
 }
 
