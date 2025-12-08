@@ -92,7 +92,13 @@ footer {
 /* ===== SP用 ===== */
 @media (max-width: 768px) {
   body {
-    flex-direction: row;
+    flex-direction: column;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;  /* スマホ幅いっぱい */
+    padding: 20px;
   }
 
   .sidebar {
