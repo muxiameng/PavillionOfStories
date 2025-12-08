@@ -22,9 +22,9 @@ const afterImage = () => {
 };
 
 const glitch = () => {
-  title.setAttribute("data-text", title.textContent);
-  title.classList.add("glitch");
-  setTimeout(() => title.classList.remove("glitch"), 300); // 0.3秒だけ
+  target.setAttribute("data-text", target.textContent);
+  target.classList.add("glitch");
+  setTimeout(() => target.classList.remove("glitch"), 300); // 0.3秒だけ
 };
 
 // ===== MAIN =====
