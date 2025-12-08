@@ -39,3 +39,25 @@ async function typeThreeStage() {
 
 document.addEventListener("DOMContentLoaded", typeThreeStage);
 
+// ふわっとフェードイン
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(
+    ".welcome-hero, .welcome-cards, .welcome-profile, .welcome-updates"
+  );
+
+  elements.forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(15px)";
+  });
+
+  setTimeout(() => {
+    elements.forEach((el, i) => {
+      setTimeout(() => {
+        el.style.transition = "0.6s ease";
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }, i * 120);
+    });
+  }, 200);
+});
+

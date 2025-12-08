@@ -1,15 +1,15 @@
 // ===== CONFIG =====
-const eng = ["illustrations"];
+const eng = "illustrations";
 
 // ===== MAIN =====
 async function typeText() {
 
   // 1. 英字タイピング
-  for (let char of eng[i].split('')) {
+  for (let char of eng.split('')) {
     target.textContent += char;
     await delay(randomDelay());
-    await delay(300);
   }
+  await delay(300);
 
   // 震え
   target.classList.add("shake");

@@ -1,0 +1,77 @@
+/* 全体 */
+.welcome-container {
+  padding: 20px;
+  color: #fff;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/* Hero */
+.welcome-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.welcome-desc {
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* カードリンク */
+.welcome-cards {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.welcome-card {
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.welcome-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+}
+
+.card-icon {
+  font-size: 1.6rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* プロフィール */
+.profile-title,
+.updates-title {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  border-left: 4px solid #fff;
+  padding-left: 10px;
+}
+
+.profile-text {
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* 更新情報 */
+.updates-list {
+  list-style: none;
+  padding-left: 0;
+  opacity: 0.9;
+}
+
+.updates-list li {
+  margin: 6px 0;
+}
