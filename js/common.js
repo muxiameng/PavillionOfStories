@@ -1,7 +1,4 @@
 const target = document.getElementById("site-title");
-// const menuToggle = document.getElementById('menuToggle');
-// const sidebar = document.getElementById('sidebar');
-// const footer = document.getElementById("footer");
 
 // ===== COMPONENTS FETCH =====
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,6 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const sidebar = sidebarContainer.querySelector(".sidebar");
         const sidebarLinks = sidebar.querySelectorAll('.sidebar-link');
+
+        /* ★ index 以外は初回から閉じておく（SPのみ） */
+        if (window.innerWidth <= 768 && !isIndex) {
+          sidebar.classList.add("closed");
+        }
 
         // SP：リンク押したら閉じる
         sidebarLinks.forEach(link => {
@@ -53,50 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-
-//   /* ▼ サイドバー読み込み ▼ */
-//   if (sidebar) {
-//     fetch("/PavillionOfStories/components/sidebar.html")
-//       .then(res => res.text())
-//       .then(html => {
-//         sidebar.innerHTML = html;
-//       });
-
-//       const sidebarLinks = document.querySelectorAll('.sidebar-link');
-
-//       // SPのとき、サイドバーリンク押下でメニューを閉じる
-//       sidebarLinks.forEach(link => {
-//         link.addEventListener('click', () => {
-//           if (window.innerWidth <= 768) {
-//             sidebar.classList.add('closed');
-//           }
-//         });
-//       });
-//   }
-
-//   /* ▼ フッター読み込み ▼ */
-//   if (footer) {
-//     fetch("/PavillionOfStories/components/footer.html")
-//       .then(res => res.text())
-//       .then(html => {
-//         footer.innerHTML = html;
-//       });
-//   }
-
-// });
-
-// menuToggle.addEventListener('click', () => {
-//   sidebar.classList.toggle('closed');
-// });
-
-// // リサイズ時にハンバーガーメニュー表示切り替え
-// window.addEventListener('resize', () => {
-//   if (window.innerWidth > 768) {
-//     sidebar.classList.remove('closed'); // PCは常に開く
-//   }
-// });
-
 // ===== UTIL =====
 /**
  * 遅延
@@ -124,13 +82,11 @@ const afterImage = () => {
   const ghost = target.cloneNode(true); // タイトルのコピー
   ghost.classList.add("afterimage");   // CSSで赤い残像になる
   ghost.style.position = "absolute";
-  ghost.style.left = "0";
+  ghost.style.left = "5";
   ghost.style.top = "0";
 
   target.appendChild(ghost);
  
-  // document.body.appendChild(ghost);
-
   setTimeout(() => ghost.remove(), 300); // 0.3秒で消える
 };
 
@@ -164,7 +120,7 @@ function startRandomGlitch() {
   noise.style.position = "absolute";
   noise.style.left = "0";
   noise.style.top = "0";
-  noise.style.width = "100%";
+  noise.style.width = "50%";
   noise.style.height = "100%";
   noise.style.pointerEvents = "none";
   
