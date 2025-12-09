@@ -74,7 +74,13 @@ function randomDelay(min = 60, max = 150) {
 const afterImage = () => {
   const ghost = target.cloneNode(true); // タイトルのコピー
   ghost.classList.add("afterimage");   // CSSで赤い残像になる
-  document.body.appendChild(ghost);
+  ghost.style.position = "absolute";
+  ghost.style.left = "0";
+  ghost.style.top = "0";
+
+  target.appendChild(ghost);
+ 
+  // document.body.appendChild(ghost);
 
   setTimeout(() => ghost.remove(), 300); // 0.3秒で消える
 };
@@ -106,6 +112,13 @@ function startRandomGlitch() {
   // ノイズレイヤーを作成
   const noise = document.createElement("div");
   noise.classList.add("glitch-noise");
+  noise.style.position = "absolute";
+  noise.style.left = "0";
+  noise.style.top = "0";
+  noise.style.width = "100%";
+  noise.style.height = "100%";
+  noise.style.pointerEvents = "none";
+  
   target.style.position = "relative";
   target.appendChild(noise);
 
@@ -114,13 +127,15 @@ function startRandomGlitch() {
     const wait = 500 + Math.random() * 3500;
     setTimeout(() => {
       noise.style.animation = "glitch-slide 0.28s steps(10)";
+      afterImage();
 
       noise.addEventListener("animationend", () => {
         noise.style.animation = "";
-      });
+      },
+        { once: true } // ←イベント暴走防止（超重要）
+      );
 
       triggerGlitch();
-      afterImage();
     }, wait);
   }
 

@@ -132,11 +132,20 @@ footer {
   color: #fff;
   font-size: 2.5rem;
   letter-spacing: 0.25em;
-  font-family: 'Yu Mincho', serif;
-  position: relative;
-  display: inline-block;
+  font-family: 'HomuraM-SemiLight', serif;
+  position: absolute;
+  display: block;
   text-align: center;
   margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@font-face {
+  font-family: 'HomuraM-SemiLight';
+  src: url('../fonts/03HomuraM-SemiLight.woff') format('woff');
+  font-display: swap;
 }
 
 /* カーソル */
@@ -166,8 +175,8 @@ footer {
 /* 残像 */
 .afterimage {
   position: absolute;
-  left: 0;
-  top: 0;
+  /* left: 0; */
+  /* top: 0; */
   pointer-events: none;
   color: rgba(255, 120, 120, 0.5);
   filter: blur(1px);
@@ -175,8 +184,10 @@ footer {
 }
 
 @keyframes fadeOutAfterimage {
-  0% { opacity: 0.8; }
-  100% { opacity: 0; }
+  from { opacity: 1; transform: translate(1px, 0); }
+  to   { opacity: 0; transform: translate(2px, 0); }
+  /* 0% { opacity: 0.8; } */
+  /* 100% { opacity: 0; } */
 }
 
 /* グリッチ（バグノイズ） */
@@ -238,19 +249,30 @@ footer {
   height: 100%;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255,255,255,0.15) 0px,
+    transparent 0px,
+    transparent 2px,
+    rgba(255, 0, 0, 0.3) 3px,
+    transparent 4px
+    /* rgba(255,255,255,0.15) 0px,
     rgba(255,255,255,0.15) 2px,
     rgba(0,0,0,0.45) 3px,
-    rgba(0,0,0,0.45) 4px
+    rgba(0,0,0,0.45) 4px */
   );
-  opacity: 0;
+  /* opacity: 0; */
+  mix-blend-mode: difference;
+  opacity: 0.4;
   pointer-events: none;
-  mix-blend-mode: normal;
+  /* mix-blend-mode: normal; */
   z-index: 999999;
 }
 
 @keyframes glitch-slide {
-  0% {
+  0%   { transform: translateX(-3px); }
+  20%  { transform: translateX( 2px); }
+  40%  { transform: translateX(-2px); }
+  60%  { transform: translateX( 1px); }
+  100% { transform: translateX( 0px); }
+  /* 0% {
     opacity: 0.55;
     transform: translateX(-20%);
   }
@@ -269,5 +291,5 @@ footer {
   100% {
     opacity: 0;
     transform: translateX(0%);
-  }
+  } */
 }
