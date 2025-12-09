@@ -1,26 +1,43 @@
 const target = document.getElementById("site-title");
-const menuToggle = document.getElementById('menuToggle');
-const sidebar = document.getElementById('sidebar');
-const footer = document.getElementById("footer");
+// const menuToggle = document.getElementById('menuToggle');
+// const sidebar = document.getElementById('sidebar');
+// const footer = document.getElementById("footer");
 
 // ===== COMPONENTS FETCH =====
 document.addEventListener("DOMContentLoaded", () => {
 
+  const sidebarContainer = document.getElementById("sidebar");
+  const menuToggle = document.getElementById('menuToggle');
+  const footer = document.getElementById("footer");
+
   /* ▼ サイドバー読み込み ▼ */
-  if (sidebar) {
+  if (sidebarContainer) {
     fetch("/PavillionOfStories/components/sidebar.html")
       .then(res => res.text())
       .then(html => {
-        sidebar.innerHTML = html;
-      });
+        sidebarContainer.innerHTML = html;
 
-      const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const sidebar = sidebarContainer.querySelector(".sidebar");
+        const sidebarLinks = sidebar.querySelectorAll('.sidebar-link');
 
-      // SPのとき、サイドバーリンク押下でメニューを閉じる
-      sidebarLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (window.innerWidth <= 768) {
-            sidebar.classList.add('closed');
+        // SP：リンク押したら閉じる
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+              sidebar.classList.add('closed');
+            }
+          });
+        });
+
+        // ハンバーガーメニュー開閉
+        menuToggle.addEventListener('click', () => {
+          sidebar.classList.toggle('closed');
+        });
+
+        // リサイズ時の挙動
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 768) {
+            sidebar.classList.remove('closed'); // PC は常に開く
           }
         });
       });
@@ -34,19 +51,51 @@ document.addEventListener("DOMContentLoaded", () => {
         footer.innerHTML = html;
       });
   }
-
 });
 
-menuToggle.addEventListener('click', () => {
-  sidebar.classList.toggle('closed');
-});
+// document.addEventListener("DOMContentLoaded", () => {
 
-// リサイズ時にハンバーガーメニュー表示切り替え
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 768) {
-    sidebar.classList.remove('closed'); // PCは常に開く
-  }
-});
+//   /* ▼ サイドバー読み込み ▼ */
+//   if (sidebar) {
+//     fetch("/PavillionOfStories/components/sidebar.html")
+//       .then(res => res.text())
+//       .then(html => {
+//         sidebar.innerHTML = html;
+//       });
+
+//       const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+//       // SPのとき、サイドバーリンク押下でメニューを閉じる
+//       sidebarLinks.forEach(link => {
+//         link.addEventListener('click', () => {
+//           if (window.innerWidth <= 768) {
+//             sidebar.classList.add('closed');
+//           }
+//         });
+//       });
+//   }
+
+//   /* ▼ フッター読み込み ▼ */
+//   if (footer) {
+//     fetch("/PavillionOfStories/components/footer.html")
+//       .then(res => res.text())
+//       .then(html => {
+//         footer.innerHTML = html;
+//       });
+//   }
+
+// });
+
+// menuToggle.addEventListener('click', () => {
+//   sidebar.classList.toggle('closed');
+// });
+
+// // リサイズ時にハンバーガーメニュー表示切り替え
+// window.addEventListener('resize', () => {
+//   if (window.innerWidth > 768) {
+//     sidebar.classList.remove('closed'); // PCは常に開く
+//   }
+// });
 
 // ===== UTIL =====
 /**
