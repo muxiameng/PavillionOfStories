@@ -1,7 +1,6 @@
 const target = document.getElementById("site-title");
 const menuToggle = document.getElementById('menuToggle');
 const sidebar = document.getElementById('sidebar');
-const sidebarLinks = document.querySelectorAll('.sidebar-link');
 const footer = document.getElementById("footer");
 
 // ===== COMPONENTS FETCH =====
@@ -13,6 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.text())
       .then(html => {
         sidebar.innerHTML = html;
+      });
+
+      const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+      // SPのとき、サイドバーリンク押下でメニューを閉じる
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            sidebar.classList.add('closed');
+          }
+        });
       });
   }
 
@@ -27,18 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 menuToggle.addEventListener('click', () => {
   sidebar.classList.toggle('closed');
-});
-
-// SPのとき、サイドバーリンク押下でメニューを閉じる
-sidebarLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      sidebar.classList.add('closed');
-    }
-  });
 });
 
 // リサイズ時にハンバーガーメニュー表示切り替え

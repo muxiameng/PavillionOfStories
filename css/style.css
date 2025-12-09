@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'HomuraM-ExtraLight', serif;
   display: flex;
   height: 100vh;
   flex-direction: column;
@@ -137,14 +137,21 @@ footer {
   display: block;
   text-align: center;
   margin: 0 auto;
-  top: 0;
+  top: 5%;
   left: 50%;
   transform: translate(-50%);
 }
 
+/* フォントのロード */
 @font-face {
   font-family: 'HomuraM-SemiLight';
   src: url('../fonts/03HomuraM-SemiLight.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HomuraM-ExtraLight';
+  src: url('../fonts/01HomuraM-ExtraLight.woff') format('woff');
   font-display: swap;
 }
 
@@ -175,7 +182,7 @@ footer {
 /* 残像 */
 .afterimage {
   position: absolute;
-  /* left: 0; */
+  left: 30%;
   /* top: 0; */
   pointer-events: none;
   color: rgba(255, 120, 120, 0.5);
