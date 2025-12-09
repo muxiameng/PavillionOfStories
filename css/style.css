@@ -89,9 +89,6 @@ footer {
   }
 
   .sidebar {
-    /* position: fixed; */
-    /* left: 0; */
-    /* top: 0; */
     width: 100vw;
     height: 100vh;
     transform: translateX(0); /* 初期表示は開いている */
@@ -180,8 +177,7 @@ footer {
 /* 残像 */
 .afterimage {
   position: absolute;
-  left: 30%;
-  /* top: 0; */
+  left: 10%;
   pointer-events: none;
   color: rgba(255, 120, 120, 0.5);
   filter: blur(1px);
@@ -191,8 +187,6 @@ footer {
 @keyframes fadeOutAfterimage {
   from { opacity: 1; transform: translate(1px, 0); }
   to   { opacity: 0; transform: translate(2px, 0); }
-  /* 0% { opacity: 0.8; } */
-  /* 100% { opacity: 0; } */
 }
 
 /* グリッチ（バグノイズ） */

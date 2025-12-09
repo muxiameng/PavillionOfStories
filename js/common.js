@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById('menuToggle');
   const footer = document.getElementById("footer");
 
+  /* 今いるページのファイル名を取得 */
+  const path = window.location.pathname;
+  const isIndex = path.endsWith("index.html") || path.endsWith("/");
+
   /* ▼ サイドバー読み込み ▼ */
   if (sidebarContainer) {
     fetch("/PavillionOfStories/components/sidebar.html")
@@ -82,7 +86,7 @@ const afterImage = () => {
   const ghost = target.cloneNode(true); // タイトルのコピー
   ghost.classList.add("afterimage");   // CSSで赤い残像になる
   ghost.style.position = "absolute";
-  ghost.style.left = "5";
+  ghost.style.left = "0";
   ghost.style.top = "0";
 
   target.appendChild(ghost);
@@ -118,7 +122,7 @@ function startRandomGlitch() {
   const noise = document.createElement("div");
   noise.classList.add("glitch-noise");
   noise.style.position = "absolute";
-  noise.style.left = "0";
+  noise.style.left = "10";
   noise.style.top = "0";
   noise.style.width = "50%";
   noise.style.height = "100%";
