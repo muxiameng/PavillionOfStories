@@ -7,7 +7,7 @@ async function typeText() {
   // 1. 英字タイピング
   for (let char of eng.split('')) {
     target.textContent += char;
-    await delay(randomDelay());
+    await delay(randomWait());
   }
   await delay(300);
 
