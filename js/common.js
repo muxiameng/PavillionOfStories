@@ -75,14 +75,11 @@ function delay(ms) {
 }
 
 /**
- * ランダム遅延
- * @param {*} min 
- * @param {*} max 
- * @returns 
+ * ランダム待機時間
  */
-function randomDelay(min = 60, max = 150) {
+const randomWait = (min = 800, max = 2500) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 /**
  * 残像演出
@@ -93,6 +90,7 @@ const afterImage = () => {
   ghost.style.position = "absolute";
   ghost.style.left = "0";
   ghost.style.top = "0";
+  ghost.style.pointerEvents = "none";
 
   target.appendChild(ghost);
  
@@ -106,6 +104,33 @@ const glitch = () => {
   target.setAttribute("data-text", target.textContent);
   target.classList.add("glitch");
   setTimeout(() => target.classList.remove("glitch"), 300); // 0.3秒だけ
+};
+
+/**
+ * ランダム発生ループ（ずっと繰り返す）
+ */
+const startTitleEffects = () => {
+  const loop = () => {
+    // どの演出を出すかランダムで決める
+    const random = Math.random();
+
+    if (random < 0.4) {
+      // 40%の確率で残像
+      afterImage();
+    } else if (random < 0.8) {
+      // 次の40%はグリッチ
+      glitch();
+    } else {
+      // 20%は両方
+      afterImage();
+      glitch();
+    }
+
+    // ランダム間隔で次を実行
+    setTimeout(loop, randomWait());
+  };
+
+  loop();
 };
 
 /**

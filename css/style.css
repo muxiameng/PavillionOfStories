@@ -128,8 +128,8 @@ footer {
   font-size: 2.5rem;
   letter-spacing: 0.25em;
   font-family: 'HomuraM-SemiLight', serif;
-  position: absolute;
-  display: block;
+  position: relative;
+  display: inline-block;
   text-align: center;
   margin: 0 auto;
   top: 5%;
@@ -191,7 +191,8 @@ footer {
 
 /* グリッチ（バグノイズ） */
 .glitch {
-  position: relative;
+  animation: glitch-move 0.3s steps(5);
+  /* position: relative; */
 }
 
 .glitch::before {

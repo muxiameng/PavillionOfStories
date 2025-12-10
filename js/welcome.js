@@ -33,6 +33,8 @@ async function typeThreeStage() {
   afterImage();
   glitch();
 
+  startTitleEffects();
+
   // startRandomGlitch();
 
 }
