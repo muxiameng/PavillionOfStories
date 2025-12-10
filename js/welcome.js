@@ -10,14 +10,14 @@ async function typeThreeStage() {
     // 1. ローマ字タイピング
     for (let char of romaji[i].split('')) {
       target.textContent += char;
-      await delay(randomDelay());
+      await delay(randomWait());
     }
     await delay(300);
 
     // 2. ひらがなに変換
     target.textContent = target.textContent.slice(0, -romaji[i].length);
     target.textContent += hira[i];
-    await delay(randomDelay(50, 130));
+    await delay(randomWait(50, 130));
     await delay(300);
 
     // 3. 漢字へ変換（震え・残像）
