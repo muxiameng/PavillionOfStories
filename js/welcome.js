@@ -20,7 +20,7 @@ async function typeThreeStage() {
     await delay(randomDelay(50, 130));
     await delay(300);
 
-    // 3. 漢字へ変換（震え・残像・風ゆらぎ）
+    // 3. 漢字へ変換（震え・残像）
     target.textContent = target.textContent.slice(0, -hira[i].length);
     target.textContent += kanji[i];
   }
@@ -33,7 +33,7 @@ async function typeThreeStage() {
   afterImage();
   glitch();
 
-  startRandomGlitch();
+  // startRandomGlitch();
 
 }
 

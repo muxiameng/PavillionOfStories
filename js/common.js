@@ -8,8 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const footer = document.getElementById("footer");
 
   /* 今いるページのファイル名を取得 */
-  const path = window.location.pathname;
-  const isIndex = path.endsWith("index.html") || path.endsWith("/");
+const path = location.pathname;
+
+// トップページ判定（完全一致）
+const isIndex =
+  path === "/PavillionOfStories/" ||
+  path === "/PavillionOfStories/index.html";
+
 
   /* ▼ サイドバー読み込み ▼ */
   if (sidebarContainer) {
@@ -119,30 +124,30 @@ function randomGlitch() {
 function startRandomGlitch() {
 
   // ノイズレイヤーを作成
-  const noise = document.createElement("div");
-  noise.classList.add("glitch-noise");
-  noise.style.position = "absolute";
-  noise.style.left = "10";
-  noise.style.top = "0";
-  noise.style.width = "50%";
-  noise.style.height = "100%";
-  noise.style.pointerEvents = "none";
+  // const noise = document.createElement("div");
+  // noise.classList.add("glitch-noise");
+  // noise.style.position = "absolute";
+  // noise.style.left = "10";
+  // noise.style.top = "0";
+  // noise.style.width = "50%";
+  // noise.style.height = "100%";
+  // noise.style.pointerEvents = "none";
   
-  target.style.position = "relative";
-  target.appendChild(noise);
+  // target.style.position = "relative";
+  // target.appendChild(noise);
 
   function triggerGlitch() {
     // ランダムタイミング
     const wait = 500 + Math.random() * 3500;
     setTimeout(() => {
-      noise.style.animation = "glitch-slide 0.28s steps(10)";
+      // noise.style.animation = "glitch-slide 0.28s steps(10)";
       afterImage();
 
-      noise.addEventListener("animationend", () => {
-        noise.style.animation = "";
-      },
-        { once: true } // ←イベント暴走防止（超重要）
-      );
+      // noise.addEventListener("animationend", () => {
+      //   noise.style.animation = "";
+      // },
+      //   { once: true } // ←イベント暴走防止（超重要）
+      // );
 
       triggerGlitch();
     }, wait);
