@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", typeText);
 /* illust.js - ページ固有の動作 */
 (() => {
     // 設定: カテゴリ数と1カテゴリあたりの最大探索数
-    const CATEGORY_COUNT = 10; // 必要に応じて増やして下さい
+    const CATEGORY_COUNT = 5; // 必要に応じて増やして下さい
     const MAX_PER_CATEGORY = 50;
 
 
