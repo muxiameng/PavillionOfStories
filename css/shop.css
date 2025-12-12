@@ -2,9 +2,9 @@
     box-sizing:border-box
 }
 
-body{
+/* body{
   padding-left: 266px;
-} 
+}  */
 
 .wrap{
     max-width:var(--max-w)
