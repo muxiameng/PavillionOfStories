@@ -10,6 +10,7 @@ body {
   font-family: 'HomuraM-ExtraLight', serif;
   display: flex;
   height: 100vh;
+  padding-left: 266px;
   flex-direction: column;
 }
 

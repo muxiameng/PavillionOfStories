@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", typeText);
 
 
     // 画像格納ルール: /illusts/images/category{n}/img{m}.jpg
-    const imagePath = (c, i) => `/illusts/images/category${c}/img${i}.jpg`;
+    const imagePath = (c, i) => `../illusts/images/category${c}/img${i}.jpg`;
 
 
     // メタデータ読み込みを試みる (optional)
     async function fetchMeta(category) {
         try {
-            const res = await fetch(`/illusts/data/meta_category${category}.json`);
+            const res = await fetch(`../illusts/data/meta_category${category}.json`);
             if (!res.ok) return null;
             return await res.json();
         } catch (e) { return null }
