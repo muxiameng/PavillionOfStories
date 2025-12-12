@@ -10,7 +10,6 @@ body {
   font-family: 'HomuraM-ExtraLight', serif;
   display: flex;
   height: 100vh;
-  padding-left: 266px;
   flex-direction: column;
 }
 
@@ -134,7 +133,7 @@ footer {
   text-align: center;
   margin: 0 auto;
   top: 5%;
-  left: 50%;
+  /* left: 50%; */
   transform: translate(-50%);
 }
 

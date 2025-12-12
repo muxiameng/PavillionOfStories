@@ -23,10 +23,8 @@ async function typeText() {
 
 }
 
-document.addEventListener("DOMContentLoaded", typeText);
-
 // shop.js
-(() => {
+function initShopModule() {
   const DATA_URL = '../shop/data/products.json';
   let PRODUCTS = [];
   let filtered = [];
@@ -183,4 +181,11 @@ document.addEventListener("DOMContentLoaded", typeText);
     document.getElementById('seeMoreBtn').style.display = filtered.length>visibleCount ? 'inline-block' : 'none';
     observeCards();
   }
-})
+}
+window.initShopModule = initShopModule;
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await typeText();  // タイトル演出が終わってから shop 処理へ
+  initShopModule();        // 商品データ読み込み開始
+});
+
