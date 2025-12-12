@@ -43,37 +43,72 @@ function initIllustModule() {
         } catch (e) { return null }
     }
 
-
-    // 指定カテゴリの画像を検出して配列を返す
-    async function detectImages(category) {
-        const meta = await fetchMeta(category) || {};
-        const items = [];
-
-
-        for (let i = 1; i <= MAX_PER_CATEGORY; i++) {
-            const url = imagePath(category, i);
-            // 画像が存在するかどうかをHEADで確かめる（GitHub PagesはHEADを受け付けないことがあるため、Imageで試す）
-            // ここではImageオブジェクトでonload/onerrorを使って判定する
-            const ok = await new Promise(resolve => {
-                const img = new Image();
-                img.onload = () => resolve(true);
-                img.onerror = () => resolve(false);
-                img.src = url + `?v=${Date.now()}`; // キャッシュ回避
-            });
-            if (!ok) break; // 1つ見つからなければそのカテゴリの終わりとみなす
-
-
-            const m = meta[`img${i}`] || {};
-            items.push({
-                src: url,
-                title: m.title || `作品${category} - ${i}`,
-                desc: m.desc || '',
-                tags: m.tags || [],
-                date: m.date || ''
-            });
-        }
-        return items;
+    // 画像存在チェックを追加
+    async function imageExists(url){
+        try{
+        const res = await fetch(url, { method: "HEAD" });
+        return res.ok;
+        }catch(e){return false}
     }
+    
+    // 画像を固定数だけ fetch していた処理を、
+    // 存在チェックに変更して404を出さないようにした
+    async function loadCategory(category){
+        const meta = await fetchMeta(category) || {};
+        const list = [];
+    
+        for(let i=1; i<=MAX_PER_CATEGORY; i++){
+        const url = imagePath(category, i);
+        const exists = await imageExists(url);
+        if(!exists) continue;  // ← 404 の画像はスキップ
+    
+        const key = `img${i}`;
+        list.push({
+            category,
+            index: i,
+            url,
+            title: meta[key]?.title || `イラスト${i}`,
+            desc: meta[key]?.desc || "",
+            tags: meta[key]?.tags || [],
+            date: meta[key]?.date || ""
+        });
+        }
+        return list;
+    }
+    
+  
+    // // 指定カテゴリの画像を検出して配列を返す
+    // async function detectImages(category) {
+    //     const meta = await fetchMeta(category) || {};
+    //     const items = [];
+
+
+    //     for (let i = 1; i <= MAX_PER_CATEGORY; i++) {
+    //         const url = imagePath(category, i);
+    //         const exists = await imageExists(url);
+    //         if(!exists) continue;
+    //         // 画像が存在するかどうかをHEADで確かめる（GitHub PagesはHEADを受け付けないことがあるため、Imageで試す）
+    //         // ここではImageオブジェクトでonload/onerrorを使って判定する
+    //         const ok = await new Promise(resolve => {
+    //             const img = new Image();
+    //             img.onload = () => resolve(true);
+    //             img.onerror = () => resolve(false);
+    //             img.src = url + `?v=${Date.now()}`; // キャッシュ回避
+    //         });
+    //         if (!ok) break; // 1つ見つからなければそのカテゴリの終わりとみなす
+
+
+    //         const m = meta[`img${i}`] || {};
+    //         items.push({
+    //             src: url,
+    //             title: m.title || `作品${category} - ${i}`,
+    //             desc: m.desc || '',
+    //             tags: m.tags || [],
+    //             date: m.date || ''
+    //         });
+    //     }
+    //     return items;
+    // }
 
 
     // 全カテゴリ読み込み
@@ -82,7 +117,7 @@ function initIllustModule() {
 
 
         for (let c = 1; c <= CATEGORY_COUNT; c++) {
-            const imgs = await detectImages(c);
+            const imgs = await loadCategory(c);
             if (imgs.length === 0) continue;
 
 
