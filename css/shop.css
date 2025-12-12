@@ -2,7 +2,7 @@
     box-sizing:border-box
 }
 
-body{
+/* body{
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP",Arial; 
     background:#f7f7f8;
     color:#111;
@@ -10,7 +10,7 @@ body{
     padding:28px 12px;
     display:flex;
     justify-content:center
-}
+} */
 
 .wrap{
     width:100%;

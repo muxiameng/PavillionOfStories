@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", typeText);
 
 // shop.js
 (() => {
-  const DATA_URL = '/shop/data/products.json';
+  const DATA_URL = '../shop/data/products.json';
   let PRODUCTS = [];
   let filtered = [];
   let visibleCount = 9;
@@ -74,6 +74,8 @@ document.addEventListener("DOMContentLoaded", typeText);
     try{
       const res = await fetch(DATA_URL);
 
+      console.log(res);
+
       if(!res.ok) throw new Error('products.json を取得できませんでした');
 
       PRODUCTS = await res.json();
@@ -107,6 +109,7 @@ document.addEventListener("DOMContentLoaded", typeText);
     bar.appendChild(all);
 
     cats.forEach(cat=>{
+      console.log(cat);
       const el = document.createElement('div');
       const submenu = document.createElement('div');
 
