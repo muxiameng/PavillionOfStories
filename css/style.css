@@ -133,7 +133,7 @@ footer {
   text-align: center;
   margin: 0 auto;
   top: 5%;
-  /* left: 50%; */
+  left: 50%;
   transform: translate(-50%);
 }
 

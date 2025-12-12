@@ -4,29 +4,27 @@ const eng = "illustrations";
 // ===== MAIN =====
 async function typeText() {
 
-  // 1. 英字タイピング
-  for (let char of eng.split('')) {
-    target.textContent += char;
-    await delay(randomWait());
-  }
-  await delay(300);
+    // 1. 英字タイピング
+    for (let char of eng.split('')) {
+        target.textContent += char;
+        await delay(randomWait());
+    }
+    await delay(300);
 
-  // 震え
-  target.classList.add("shake");
-  await delay(250);
-  target.classList.remove("shake");
+    // 震え
+    target.classList.add("shake");
+    await delay(250);
+    target.classList.remove("shake");
 
-  afterImage();
-  glitch();
+    afterImage();
+    glitch();
 
-  startRandomGlitch();
+    startRandomGlitch();
 
 }
 
-document.addEventListener("DOMContentLoaded", typeText);
-
 /* illust.js - ページ固有の動作 */
-(() => {
+function initIllustModule() {
     // 設定: カテゴリ数と1カテゴリあたりの最大探索数
     const CATEGORY_COUNT = 5; // 必要に応じて増やして下さい
     const MAX_PER_CATEGORY = 50;
@@ -178,6 +176,13 @@ document.addEventListener("DOMContentLoaded", typeText);
         }
     }
     // 初期化
-    document.addEventListener('DOMContentLoaded', () => { buildGallery(); });
-})();
+    buildGallery();
+}
 
+window.initIllustModule = initIllustModule;
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await typeText();  // タイトル演出が終わってから shop 処理へ
+    initIllustModule();        // 商品データ読み込み開始
+});
