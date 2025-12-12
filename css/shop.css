@@ -117,7 +117,13 @@ select,button{
   box-shadow:0 6px 18px rgba(0,0,0,.15); /* ← 影を濃く */
   transform:translateY(10px);
   opacity:0;
-  transition:all .6s cubic-bezier(.2,.9,.2,1);
+  transition: 0.4s ease;
+  /* transition:all .6s cubic-bezier(.2,.9,.2,1); */
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card.visible{

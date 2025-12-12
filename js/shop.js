@@ -66,13 +66,42 @@ function initShopModule() {
         setTimeout(() => { div.style.opacity = '0'; setTimeout(() => div.remove(), 400); }, timeout);
     }
 
+    function applyFilters(opts = {}) {
+        // opts.category が指定されていたらカテゴリ絞り込み
+        if (opts.category) {
+            filtered = PRODUCTS.filter(p => p.category.includes(opts.category));
+        } else {
+            filtered = [...PRODUCTS]; // 全件
+        }
+
+        // 最初の9件に戻す
+        visibleCount = 9;
+
+        // 描画
+        renderGrid();
+    }
+
+    function observeCards() {
+        const cards = document.querySelectorAll('.card');
+
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('show');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        cards.forEach(card => io.observe(card));
+    }
 
     // fetch products
     async function loadProducts() {
         try {
             const res = await fetch(DATA_URL);
-
-            console.log(res);
 
             if (!res.ok) throw new Error('products.json を取得できませんでした');
 
