@@ -19,7 +19,7 @@ async function typeText() {
     afterImage();
     glitch();
 
-    startRandomGlitch();
+    startTitleEffects();
 
 }
 
@@ -44,39 +44,39 @@ function initIllustModule() {
     }
 
     // 画像存在チェックを追加
-    async function imageExists(url){
-        try{
-        const res = await fetch(url, { method: "HEAD" });
-        return res.ok;
-        }catch(e){return false}
+    async function imageExists(url) {
+        try {
+            const res = await fetch(url, { method: "HEAD" });
+            return res.ok;
+        } catch (e) { return false }
     }
-    
+
     // 画像を固定数だけ fetch していた処理を、
     // 存在チェックに変更して404を出さないようにした
-    async function loadCategory(category){
+    async function loadCategory(category) {
         const meta = await fetchMeta(category) || {};
         const list = [];
-    
-        for(let i=1; i<=MAX_PER_CATEGORY; i++){
-        const url = imagePath(category, i);
-        const exists = await imageExists(url);
-        if(!exists) continue;  // ← 404 の画像はスキップ
-    
-        const key = `img${i}`;
-        list.push({
-            category,
-            index: i,
-            url,
-            title: meta[key]?.title || `イラスト${i}`,
-            desc: meta[key]?.desc || "",
-            tags: meta[key]?.tags || [],
-            date: meta[key]?.date || ""
-        });
+
+        for (let i = 1; i <= MAX_PER_CATEGORY; i++) {
+            const url = imagePath(category, i);
+            const exists = await imageExists(url);
+            if (!exists) continue; // ← 404 の画像はスキップ
+
+            const key = `img${i}`;
+            list.push({
+                category,
+                index: i,
+                url,
+                title: meta[key] ? .title || `イラスト${i}`,
+                desc: meta[key] ? .desc || "",
+                tags: meta[key] ? .tags || [],
+                date: meta[key] ? .date || ""
+            });
         }
         return list;
     }
-    
-  
+
+
     // // 指定カテゴリの画像を検出して配列を返す
     // async function detectImages(category) {
     //     const meta = await fetchMeta(category) || {};
@@ -129,6 +129,7 @@ function initIllustModule() {
             const titleH1 = document.createElement('h1');
             titleH1.className = 'work-title';
             titleH1.textContent = `作品 ${c}`;
+
             function attachThumbHandlers() {
                 flattenGallery();
                 document.querySelectorAll('.thumb').forEach(btn => {
@@ -160,6 +161,7 @@ function initIllustModule() {
 
 
             let currentIndex = 0;
+
             function openOverlayFromThumb(e) {
                 const btn = e.currentTarget;
                 const flatIndex = gallery.findIndex(g => g.el === btn);
@@ -205,7 +207,8 @@ function initIllustModule() {
                 document.querySelectorAll('.work-item').forEach(work => {
                     const text = work.textContent.toLowerCase();
                     const thumbs = Array.from(work.querySelectorAll('img')).map(i => i.alt.toLowerCase()).join(' ');
-                    if (text.includes(q) || thumbs.includes(q)) work.style.display = 'block'; else work.style.display = 'none';
+                    if (text.includes(q) || thumbs.includes(q)) work.style.display = 'block';
+                    else work.style.display = 'none';
                 });
             }
         }
@@ -217,7 +220,7 @@ function initIllustModule() {
 window.initIllustModule = initIllustModule;
 
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await typeText();  // タイトル演出が終わってから shop 処理へ
-    initIllustModule();        // 商品データ読み込み開始
+document.addEventListener("DOMContentLoaded", async() => {
+    await typeText(); // タイトル演出が終わってから shop 処理へ
+    initIllustModule(); // 商品データ読み込み開始
 });

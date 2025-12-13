@@ -3,65 +3,65 @@ const target = document.getElementById("site-title");
 // ===== COMPONENTS FETCH =====
 document.addEventListener("DOMContentLoaded", () => {
 
-  const sidebarContainer = document.getElementById("sidebar");
-  const menuToggle = document.getElementById('menuToggle');
-  const footer = document.getElementById("footer");
+    const sidebarContainer = document.getElementById("sidebar");
+    const menuToggle = document.getElementById('menuToggle');
+    const footer = document.getElementById("footer");
 
-  /* 今いるページのファイル名を取得 */
-const path = location.pathname;
+    /* 今いるページのファイル名を取得 */
+    const path = location.pathname;
 
-// トップページ判定（完全一致）
-const isIndex =
-  path === "/PavillionOfStories/" ||
-  path === "/PavillionOfStories/index.html";
+    // トップページ判定（完全一致）
+    const isIndex =
+        path === "/PavillionOfStories/" ||
+        path === "/PavillionOfStories/index.html";
 
 
-  /* ▼ サイドバー読み込み ▼ */
-  if (sidebarContainer) {
-    fetch("/PavillionOfStories/components/sidebar.html")
-      .then(res => res.text())
-      .then(html => {
-        sidebarContainer.innerHTML = html;
+    /* ▼ サイドバー読み込み ▼ */
+    if (sidebarContainer) {
+        fetch("/PavillionOfStories/components/sidebar.html")
+            .then(res => res.text())
+            .then(html => {
+                sidebarContainer.innerHTML = html;
 
-        const sidebar = sidebarContainer.querySelector(".sidebar");
-        const sidebarLinks = sidebar.querySelectorAll('.sidebar-link');
+                const sidebar = sidebarContainer.querySelector(".sidebar");
+                const sidebarLinks = sidebar.querySelectorAll('.sidebar-link');
 
-        /* ★ index 以外は初回から閉じておく（SPのみ） */
-        if (window.innerWidth <= 768 && !isIndex) {
-          sidebar.classList.add("closed");
-        }
+                /* ★ index 以外は初回から閉じておく（SPのみ） */
+                if (window.innerWidth <= 768 && !isIndex) {
+                    sidebar.classList.add("closed");
+                }
 
-        // SP：リンク押したら閉じる
-        sidebarLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-              sidebar.classList.add('closed');
-            }
-          });
-        });
+                // SP：リンク押したら閉じる
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 768) {
+                            sidebar.classList.add('closed');
+                        }
+                    });
+                });
 
-        // ハンバーガーメニュー開閉
-        menuToggle.addEventListener('click', () => {
-          sidebar.classList.toggle('closed');
-        });
+                // ハンバーガーメニュー開閉
+                menuToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('closed');
+                });
 
-        // リサイズ時の挙動
-        window.addEventListener('resize', () => {
-          if (window.innerWidth > 768) {
-            sidebar.classList.remove('closed'); // PC は常に開く
-          }
-        });
-      });
-  }
+                // リサイズ時の挙動
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        sidebar.classList.remove('closed'); // PC は常に開く
+                    }
+                });
+            });
+    }
 
-  /* ▼ フッター読み込み ▼ */
-  if (footer) {
-    fetch("/PavillionOfStories/components/footer.html")
-      .then(res => res.text())
-      .then(html => {
-        footer.innerHTML = html;
-      });
-  }
+    /* ▼ フッター読み込み ▼ */
+    if (footer) {
+        fetch("/PavillionOfStories/components/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                footer.innerHTML = html;
+            });
+    }
 });
 
 // ===== UTIL =====
@@ -71,112 +71,77 @@ const isIndex =
  * @returns 
  */
 function delay(ms) {
-  return new Promise(r => setTimeout(r, ms));
+    return new Promise(r => setTimeout(r, ms));
 }
 
 /**
  * ランダム待機時間
  */
-const randomWait = (min = 800, max = 2500) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+const randomWait = (min = 600, max = 1000) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 /**
  * 残像演出
  */
 const afterImage = () => {
-  const ghost = target.cloneNode(true); // タイトルのコピー
-  ghost.classList.add("afterimage");   // CSSで赤い残像になる
-  ghost.style.position = "absolute";
-  ghost.style.left = "0";
-  ghost.style.top = "0";
-  ghost.style.pointerEvents = "none";
+    const ghost = target.cloneNode(true); // タイトルのコピー
+    ghost.classList.add("afterimage"); // CSSで赤い残像になる
+    ghost.style.position = "absolute";
+    ghost.style.left = "0";
+    ghost.style.top = "0";
+    ghost.style.pointerEvents = "none";
 
-  target.appendChild(ghost);
- 
-  setTimeout(() => ghost.remove(), 300); // 0.3秒で消える
+    target.appendChild(ghost);
+
+    setTimeout(() => ghost.remove(), 300); // 0.3秒で消える
 };
 
 /**
  * グリッチ演出
  */
 const glitch = () => {
-  target.setAttribute("data-text", target.textContent);
-  target.classList.add("glitch");
-  setTimeout(() => target.classList.remove("glitch"), 300); // 0.3秒だけ
+    target.setAttribute("data-text", target.textContent);
+    target.classList.add("glitch");
+    setTimeout(() => target.classList.remove("glitch"), 300); // 0.3秒だけ
 };
 
 /**
  * ランダム発生ループ（ずっと繰り返す）
  */
 const startTitleEffects = () => {
-  const loop = () => {
-    // どの演出を出すかランダムで決める
-    const random = Math.random();
+    const loop = () => {
+        // どの演出を出すかランダムで決める
+        const random = Math.random();
 
-    if (random < 0.4) {
-      // 40%の確率で残像
-      afterImage();
-    } else if (random < 0.8) {
-      // 次の40%はグリッチ
-      glitch();
-    } else {
-      // 20%は両方
-      afterImage();
-      glitch();
-    }
+        if (random < 0.4) {
+            // 40%の確率で残像
+            afterImage();
+        } else if (random < 0.8) {
+            // 次の40%はグリッチ
+            glitch();
+        } else {
+            // 20%は両方
+            afterImage();
+            glitch();
+        }
 
-    // ランダム間隔で次を実行
-    setTimeout(loop, randomWait());
-  };
+        // ランダム間隔で次を実行
+        setTimeout(loop, randomWait());
+    };
 
-  loop();
+    loop();
 };
 
 /**
  * ランダムでグリッチを発生させる
  */
 function randomGlitch() {
-  const randomTime = Math.floor(Math.random() * 5000) + 3000;
-  // → 1.5〜4.5秒に一度 glitch が発生
+    const randomTime = Math.floor(Math.random() * 5000) + 3000;
+    // → 1.5〜4.5秒に一度 glitch が発生
 
-  setTimeout(() => {
-    glitch();
-    randomGlitch(); // 再帰でループ
-  }, randomTime);
-}
-
-function startRandomGlitch() {
-
-  // ノイズレイヤーを作成
-  // const noise = document.createElement("div");
-  // noise.classList.add("glitch-noise");
-  // noise.style.position = "absolute";
-  // noise.style.left = "10";
-  // noise.style.top = "0";
-  // noise.style.width = "50%";
-  // noise.style.height = "100%";
-  // noise.style.pointerEvents = "none";
-  
-  // target.style.position = "relative";
-  // target.appendChild(noise);
-
-  function triggerGlitch() {
-    // ランダムタイミング
-    const wait = 500 + Math.random() * 3500;
     setTimeout(() => {
-      // noise.style.animation = "glitch-slide 0.28s steps(10)";
-      afterImage();
-
-      // noise.addEventListener("animationend", () => {
-      //   noise.style.animation = "";
-      // },
-      //   { once: true } // ←イベント暴走防止（超重要）
-      // );
-
-      triggerGlitch();
-    }, wait);
-  }
-
-  triggerGlitch();
+        glitch();
+        randomGlitch(); // 再帰でループ
+    }, randomTime);
 }
