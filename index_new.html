@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>灯縁楼 -Pavilion Of Stories-</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js" charset="utf-8"></script>
+    <script src="js/common.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="title">
+        <img src="img/bg2.jpg">
+        <div class="title__inner">
+            <h1>灯縁楼 -Pavilion Of Stories-</h1>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12" id="headernav">
+                    <div class="headernav__inner">
+                        <nav>
+                            <ul>
+                                <li><a href="#illust">漫画・イラスト</a></li>
+                                <li><a href="#novels">小説</a></li>
+                                <li><a href="#about">このサイトについて</a></li>
+                                <li><a href="#link">リンク集</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <h2>このテンプレートについて</h2>
+                    <p>漫画っぽい、モノクロの個性的なデザインです。<br> Web漫画を連載されているサイトさまにおすすめです。
+                        <br> トップ画像はカラーのものを使っていただければ、
+                        <strong>CSSでモノクロになるフィルター効果を追加します</strong>。<br> もちろん、フィルターをかけるCSSを無効にして、カラーイラストをお使いいただいても、巻頭カラーみたいでカッコよくなると思います。
+                        <br>
+                        <a href="#">リンク文字はピンク色</a>。<strong>強調文字は波線です。</strong></p>
+
+                    <ul>
+                        <li><a href="./comics/index.html">MANGA</a> - WEB漫画</li>
+                        <li><a href="./story/text.html">NOVEL</a> - 漫画になってない作品が小説になってるかも</li>
+                        <li><a href="https://pavillionofstories-shop.square.site/">ONLINE SHOP</a> - kinos.のイラストグッズです。</li>
+                    </ul>
+
+                    <div class="update">
+                        <h4>これまでのあらすじ……</h4>
+                        <div class="inner">
+                            <dl>
+                                <dt>2026.01.02</dt>
+                                <dd>ポートフォリオサイト実装。</dd>
+                                <!-- <dt>2019.11.10</dt>
+                                <dd>更新情報が長くなると、下にスクロールするようになります。</dd>
+                                <dt>2019.11.05</dt>
+                                <dd>また、スクロールバーがデザインの邪魔にならないよう、<br> cssで見た目をシンプルに整えています。
+                                    <br> （IEなど、一部のブラウザでは反映されないかもです）
+                                </dd>
+                                <dt>2019.11.01</dt>
+                                <dd>たくさん更新して、たくさん下にスクロールさせてください。</dd> -->
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- end update -->
+                </div>
+                <!-- end col-12 -->
+
+                <div class="col-12 margin-top">
+                    <h2 id="illust">漫画・イラスト</h2>
+
+                    <h3>漫画</h3>
+
+                    <p>連載中の漫画です。最新話の更新はInstagramの方が早いです。</p>
+
+                    <!-- <p>連載中の漫画や新作、イベント情報など、大きなバナーで宣伝することができます。<br> 使用画像は850px×200px以上を推奨します。
+                        <br> ボックスは背景色が黒/ピンク、位置が右/左で自由に設定できます。 class="text （right/left） （black/pink）"で設定してください。<br> imgにclass="bw"を付けると白黒画像になります。
+                    </p> -->
+
+                    <a href="./comics/chadokoro/index.html" class="big-banner">
+                        <img src="img/big-bn.jpg" alt="漫画です！" class="bw">
+                        <div class="text right black">
+                            <div class="text__inner">
+                                <h3>茶処画廊</h3>
+                                <p>神のいない土地で、人(祁答院鵟)とエルフ(イヴェナ)が感情から生まれる怪異『画憑』を退治する神話退魔物語<br> 2026.01.02更新</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- end big-bn-->
+                    <a href="./comics/toaru/index.html" class="big-banner">
+                        <img src="img/big-bn.jpg" alt="漫画です！" class="bw">
+                        <div class="text right black">
+                            <div class="text__inner">
+                                <h3>とある星物語</h3>
+                                <p>傷ついた心に、そっと光が差す。苦しみの先にあるやさしさと成長を描いた、切なくもあたたかな物語<br> 2026.01.02更新</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- <a href="comic.html" class="big-banner">
+                        <img src="img/big-bn2.jpg" alt="漫画です！">
+                        <div class="text left pink">
+                            <div class="text__inner">
+                                <h3>目立たせたい更新情報に</h3>
+                                <p>パッと目を引くデザインです。見せゴマなどを設定するとよいかも。</p>
+                            </div>
+                        </div>
+                    </a> -->
+                    <!-- end big-bn -->
+
+                    <div class="comiccard">
+                        <a href="comic.html" class="comiccard__wrap black">
+                            <img src="img/comic01.jpg" alt="漫画です！" class="bw">
+                            <div class="text">
+                                <h3>狐と龍</h3>
+                                <p>世界を記録する龍と世界を観測する狐。繰り返される世界の中である『例外』が起こるーーー</p>
+                                <span class="new">new</span>
+                            </div>
+                        </a>
+                        <!-- <a href="comic.html" class="comiccard__wrap black">
+                            <img src="img/comic01.jpg" alt="漫画です！" class="bw">
+                            <div class="text">
+                                <h3>漫画１</h3>
+                                <p>漫画の小さなカードです。pタグの外にspan class="new"を与えると、一行の簡単なフキダシポップがつけられます。</p>
+                                <span class="new">new</span>
+                            </div>
+                        </a> -->
+                        <!-- end comiccard__wrap -->
+
+                        <!-- <a href="comic.html" class="comiccard__wrap pink">
+                            <img src="img/comic02.jpg" alt="漫画です！" class="bw">
+                            <div class="text">
+                                <h3>漫画２</h3>
+                                <p>ピンク色のボックスも使えます。aタグのclass="comiccard__wrap black/pink"で選べます。</p>
+                            </div>
+                        </a> -->
+                        <!-- end comiccard__wrap -->
+
+                        <!-- <a href="comic.html" class="comiccard__wrap black">
+                            <img src="img/comic03.jpg" alt="漫画です！" class="bw">
+                            <div class="text">
+                                <h3>漫画３</h3>
+                                <p>サムネイルは200px×200px以上の画像を使ってください。</p>
+                            </div>
+                        </a> -->
+                        <!-- end comiccard__wrap -->
+
+                    </div>
+
+                    <h3>イラスト</h3>
+                    <!-- <p>サムネイル画像は、100px×200pxより大きいものを使ってください。css側でいいサイズに切り抜いて表示されます。画像表示には<a href="https://do.gt-gt.org/product/lightbox/" target="_blank">lightbox</a>を使っています。<br>
+                        <strong>liにclass="new"を与えるとnewマーク</strong>がつき、<strong>imgにclass="bw"を付けると白黒画像になります</strong>。</p> -->
+                    <ul class="illust">
+                        <li>
+                            <a href="./img/01.jpg" data-title="ここに説明" data-lightbox="group1"><img src="./img/01-s.jpg" class="bw"></a>
+                        </li>
+                        <li>
+                            <a href="./img/02.jpg" data-title="ここに説明" data-lightbox="group1"><img src="./img/02-s.jpg" class="bw"></a>
+                        </li>
+                        <li>
+                            <a href="./img/03.jpg" data-title="ここに説明" data-lightbox="group1"><img src="./img/03-s.jpg"></a>
+                        </li>
+                        <li class="new">
+                            <a href="./img/04.jpg" data-title="ここに説明" data-lightbox="group1"><img src="./img/04-s.jpg"></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end col-12 -->
+
+                <div class="col-12 margin-top">
+                    <h2 id="novels">小説</h2>
+                    <p>漫画になってない作品が小説になってるかも？</p>
+                </div>
+
+                <div class="col-md-6">
+                    <h4>ジャンル名</h4>
+                    <ul class="novel-1">
+                        <li><a href="text.html">第一話！</a>
+                            <span>はちゃめちゃ大騒動！</span></li>
+                        <li><a href="text.html">第二話！</a>
+                            <span>ライバルは黒いアイツ！？<br>先輩風を吹かせろ！！</span></li>
+                        <li><a href="text.html">突然のメタ発言</a><span>説明をspanタグで囲ってください<br>
+                改行も可能です</span></li>
+                        <li><a href="text.html">第四話！</a><span>あれ？第三話はどこいった？</span></li>
+                    </ul>
+
+                    <h4>ジャンル名</h4>
+                    <p>novel-2クラス指定は説明なし、リストアイテムが複数になると区切り線が勝手に入る仕様です。過去作品などにどうぞ</p>
+                    <ul class="novel-2">
+                        <li><a href="text.html">前日譚</a></li>
+                        <li><a href="text.html">読み切り１</a></li>
+                        <li><a href="text.html">読み切り２</a></li>
+                        <li><a href="text.html">読み切り３</a></li>
+                        <li><a href="text.html">お題</a></li>
+                    </ul>
+                </div>
+                <!-- end col-md-6 -->
+
+                <div class="col-md-6">
+                    <h4>ジャンル名</h4>
+                    <p>class「col-md-6」を持っているdivを２つ並べることで、２カラムにもできます。<br> liにclass="new"を与えるとnewマークがつきます
+                    </p>
+                    <ul class="novel-1">
+                        <li><a href="text.html">炎と竜の伝説</a>
+                            <span>ファンタジー冒険譚</span></li>
+                        <li><a href="text.html">私立恋獄学園</a>
+                            <span>前代未聞のラブコメホラー</span></li>
+                        <li class="new"><a href="text.html">私とダンナくん</a><span>なんてことない話です</span></li>
+                    </ul>
+
+                    <h4>連載</h4>
+                    <p>***の連載です。</p>
+                    <ul class="novel-2">
+                        <li><a href="text.html">序章</a></li>
+                        <li><a href="text.html">第一章</a></li>
+                        <li><a href="text.html">第二章</a></li>
+                        <li><a href="text.html">第三章</a></li>
+                        <li class="new"><a href="text.html">外伝</a></li>
+                        <li class="new"><a href="text.html">第四章：空のゆくえ</a></li>
+                    </ul>
+                </div>
+                <!-- end col-md-6 -->
+
+                <div class="col-12 margin-top">
+                    <h2 id="about">このサイトについて</h2>
+                    <p>一次創作漫画とイラストを中心にしたkino.の創作サイトです。<br>イラストは二次創作も少しあります。<br> 作品の世界観を、お楽しみいただけたら幸いです。</p>
+
+                    <p>灯縁楼 -Pavilion Of Stories-（https://muxiameng.github.io/PavillionOfStories/）
+                        <br> バナー
+                        <br>
+                        <img src="./img/bn-l.jpg"><img src="./img/bn-m.jpg"><img src="./img/bn-s.jpg"></p>
+                </div>
+                <!-- end col-12 -->
+
+                <div class="col-12 margin-top">
+                    <h2 id="link">link</h2>
+                    <p>大好きなサイトさんです。</p>
+                    <!-- <ul class="link01">
+                        <li>
+                            <a href="#" target="_blank"><img src="./img/bn-l.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img src="./img/bn-l.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img src="./img/bn-l.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img src="./img/bn-l.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img src="./img/bn-l.jpg"></a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><img src="./img/bn-l.jpg"></a>
+                        </li>
+                    </ul>
+
+                    <h3>素材サイトさま</h3> -->
+                    <ul class="link02">
+                        <li><a href="https://ncode.syosetu.com/n3459jc/" title="とある星物語" target="_blank">とある星物語 原作小説です！</a></li>
+                        <!-- <li><a href="#" target="_blank">＊＊＊</a></li>
+                        <li><a href="#" target="_blank">＊＊＊</a></li> -->
+                    </ul>
+                </div>
+                <!-- end col-12 -->
+
+                <!-- <div class="col-12 margin-top">
+                    <h2 id="mail">mail</h2>
+                    <p class="margin-bottom">このままでは機能しませんので、<a href="https://www.php-factory.net/" target="_blank">PHP工房様</a>の「Mailform01」などをご利用ください。</p>
+                    <form method="post" action="ここにアクション" class="mailform">
+                        <input type="text" name="message" placeholder="感想が活力になります">
+                        <input type="submit" value="送信する">
+                    </form>
+
+                    <h3 class="margin-top">テキストエリアつきメールフォーム</h3>
+                    <form method="post" action="ここにアクション" class="mailform">
+                        <textarea rows="5" name="message" placeholder="感想が活力になります"></textarea>
+                        <input type="submit" value="送信する">
+                    </form>
+                </div> -->
+
+            </div>
+            <!-- end row -->
+
+        </div>
+        <!-- end container -->
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="template"><a href="https://do.gt-gt.org/" target="_blank">template by do.</a></p>
+        </div>
+    </footer>
+
+    <script src="js/lightbox.js" charset="utf-8"></script>
+</body>
+
+</html>
