@@ -1162,7 +1162,7 @@ ol.li-b li {
 
 .comics {
     display: block;
-    max-width: 100%;
+    max-width: 60%;
     margin: 80px auto;
     border: 1px #333333 solid;
 }
@@ -1216,6 +1216,9 @@ ol.li-b li {
 }
 
 @media (max-width: 991px) {
+    .comics {
+        max-width: 100%;
+    }
     .book {
         width: 100%;
         -webkit-box-orient: vertical;
