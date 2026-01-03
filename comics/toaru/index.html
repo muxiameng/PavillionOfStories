@@ -15,11 +15,20 @@
 
 <body>
     <div id="title" class="title-img">
-        <img src="../../img/main.jpg">
+        <img src="../img/toaru/toaru_1.JPG">
         <div class="title__inner">
             <h1>とある星物語</h1>
         </div>
     </div>
+    <!-- spのみこっちを表示 -->
+    <div id="title_sp" class="title-img">
+        <img src="../img/toaru/toaru_1.JPG">
+        <div class="title__inner">
+            <h1>とある星物語</h1>
+        </div>
+    </div>
+    <!-- spのみこっちを表示 end -->
+
 
     <main>
         <div class="container">
@@ -31,7 +40,8 @@
                             <ul>
                                 <li><a href="../../index.html">TOP</a></li>
                                 <li><a href="#manga">漫画</a></li>
-                                <li><a href="#rakugaki">らくがき</a></li>
+                                <li><a href="#settings">設定資料</a></li>
+                                <li><a href="#illust">イラスト</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -39,11 +49,17 @@
 
                 <div class="col-12">
                     <h2>あらすじ</h2>
-                    <p>漫画っぽい、モノクロの個性的なデザインです。<br> Web漫画を連載されているサイトさまにおすすめです。
-                        <br> トップ画像はカラーのものを使っていただければ、
-                        <strong>CSSでモノクロになるフィルター効果を追加します</strong>。<br> もちろん、フィルターをかけるCSSを無効にして、カラーイラストをお使いいただいても、巻頭カラーみたいでカッコよくなると思います。
-                        <br>
-                        <a href="#">リンク文字はピンク色</a>。<strong>強調文字は波線です。</strong></p>
+                    <p>舞台は魔法が繁栄する星、とある星。
+                        <br><br> 反魔法国家の姫に生まれた蛍は、長兄が謀反を起こしたことで国を追われることとなる。
+                        <br> 放浪の末、蛍が辿りついたのは魔法使いと非魔法使いが共存する「とある国」。
+                        <br> そこで己の無知と無力を痛感した蛍は、祖国奪還と再建のため、これまでの価値観をかなぐり捨てて魔法を学ぶ決意をする。
+                        <br><br> すべてを失い、未来を追い求める蛍。
+                        <br> 救われない過去と未来の間で懸命に今を生きる姫魅。
+                        <br> すべてを手にしながら、過去に縛られ続ける慰鶴。
+                        <br> 全く違うようでどこか似ている彼らは、魔法を通して絆を深め、大きく成長していく。
+                        <br><br> 傷ついたあなたの居場所になれば、幸いです。
+                        <br> ―――――――― 黒星
+                    </p>
 
                     <div class="update">
                         <h4>更新情報</h4>
@@ -68,13 +84,14 @@
 
                 <div class="col-12 margin-top">
                     <h2 id="manga">漫画</h2>
+                    <p>原作：黒星　漫画：kino.</p>
                 </div>
 
                 <div class="col-md-6">
                     <h4>連載</h4>
                     <p>とある星物語の連載です。</p>
                     <ul class="novel-1">
-                        <li><a href="001.html">第一話</a></li>
+                        <li><a tabindex="-1">第一歯</a><span>準備中</span></li>
                         <!-- <li><a href="002.html">第二話</a></li>
                         <li><a href="003.html">第三話</a></li>
                         <li><a href="004.html">第四話</a></li> -->
@@ -87,23 +104,29 @@
                     <h4>短編</h4>
                     <p>単発のおはなし</p>
                     <ul class="novel-2">
-                        <!-- <li><a href="text.html">ラブレター</a></li>
-                        <li><a href="text.html">温泉旅館</a></li> -->
+                        <li><a href="short/xmas/001.html">クリスマス</a></li>
+                        <!-- <li><a href="text.html">温泉旅館</a></li> -->
                         <!-- <li class="new"><a href="text.html">私とダンナくん</a></li> -->
                     </ul>
                 </div>
                 <!-- end col-md-6 -->
 
                 <div class="col-12 margin-top">
+                    <h2 id="settings">設定資料</h2>
+                    <h3>とある星物語の設定資料です。</h3>
+                    <p>wip</p>
+                </div>
 
-                    <h3>らくがき</h3>
+                <div class="col-12 margin-top">
+
+                    <h2 id="illust">イラスト・らくがき</h2>
                     <!-- <p>サムネイル画像は、100px×200pxより大きいものを使ってください。css側でいいサイズに切り抜いて表示されます。画像表示には<a href="https://do.gt-gt.org/product/lightbox/" target="_blank">lightbox</a>を使っています。<br>
                         <strong>liにclass="new"を与えるとnewマーク</strong>がつき、<strong>imgにclass="bw"を付けると白黒画像になります</strong>。</p> -->
-                    <ul class="rakugaki">
+                    <ul class="illust">
                         <li>
-                            <a href="./img/01.jpg" data-title="ここに説明" data-lightbox="group1"><img src="./img/01-s.jpg" class="bw"></a>
+                            <a href="../img/toaru/toaru_1.JPG" data-title="1話扉絵" data-lightbox="group1"><img src="../img/toaru/toaru_1.JPG"></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="./img/02.jpg" data-title="ここに説明" data-lightbox="group1"><img src="./img/02-s.jpg" class="bw"></a>
                         </li>
                         <li>
@@ -111,7 +134,7 @@
                         </li>
                         <li class="new">
                             <a href="./img/04.jpg" data-title="ここに説明" data-lightbox="group1"><img src="./img/04-s.jpg"></a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <!-- end col-12 -->

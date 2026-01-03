@@ -8,19 +8,37 @@
 
 @font-face {
     font-family: 'geneiantique';
-    src: url("../font/GenEiAntiqueNv5-M.ttf") format("truetype");
+    src: url("../fonts/GenEiAntiqueNv5-M.ttf") format("truetype");
 }
 
 @font-face {
     font-family: 'genjyuugothic';
-    src: url("../font/GenJyuuGothic-Medium.ttf") format("truetype");
+    src: url("../fonts/GenJyuuGothic-Medium.ttf") format("truetype");
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'genjyuugothic';
-    src: url("../font/GenJyuuGothic-Bold.ttf") format("truetype");
+    src: url("../fonts/GenJyuuGothic-Bold.ttf") format("truetype");
     font-weight: bold;
+}
+
+@font-face {
+    font-family: 'HomuraM-SemiLight';
+    src: url('../fonts/03HomuraM-SemiLight.woff') format('woff');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HomuraM-ExtraLight';
+    src: url('../fonts/01HomuraM-ExtraLight.woff') format('woff');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HomuraM-Heavy';
+    src: url('../fonts/07HomuraM-Heavy.woff') format('woff');
+    font-display: swap;
 }
 
 
@@ -60,7 +78,7 @@ body {
     background-size: auto auto;
     background-color: rgba(255, 255, 255, 1);
     background-image: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(229, 229, 229, 1) 3px, rgba(229, 229, 229, 1) 4px);
-    font-family: 'genjyuugothic';
+    font-family: 'HomuraM-SemiLight';
 }
 
 h1,
@@ -68,7 +86,7 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'geneiantique';
+    font-family: 'HomuraM-Heavy';
     line-height: 1.6em;
 }
 
@@ -211,7 +229,7 @@ input[type=submit]:focus {
 }
 
 #title {
-    font-family: 'geneiantique';
+    font-family: 'HomuraM-Heavy';
     color: #000000;
     /* トップ画像に重なる文字の色 */
     text-shadow: 2px 2px 0 #ffffff, -2px 2px 0 #ffffff, 2px -2px 0 #ffffff, -2px -2px 0 #ffffff, 2px 0 0 #ffffff, 0 2px 0 #ffffff, -2px 0 0 #ffffff, 0 -2px 0 #ffffff;
@@ -227,6 +245,10 @@ input[type=submit]:focus {
     width: 20%;
     height: 100vh;
     z-index: 1000;
+}
+
+#title_sp {
+    display: none;
 }
 
 @media (max-width: 1199px) {
@@ -245,6 +267,10 @@ input[type=submit]:focus {
 
 @media (max-width: 766px) {
     #title {
+        display: none;
+    }
+    #title_sp {
+        display: block;
         position: relative;
         width: 100%;
         left: 0;
@@ -256,6 +282,13 @@ input[type=submit]:focus {
         -webkit-writing-mode: horizontal-tb;
         -ms-writing-mode: lr-tb;
         writing-mode: horizontal-tb;
+        font-family: 'HomuraM-Heavy';
+        color: #000000;
+        /* トップ画像に重なる文字の色 */
+        text-shadow: 2px 2px 0 #ffffff, -2px 2px 0 #ffffff, 2px -2px 0 #ffffff, -2px -2px 0 #ffffff, 2px 0 0 #ffffff, 0 2px 0 #ffffff, -2px 0 0 #ffffff, 0 -2px 0 #ffffff;
+        /* トップ画像に重なる文字のふちどりの色です
+      色変更したい場合は 上記のコードの #ffffff をすべて希望の色に変えてください   */
+        z-index: 1000;
     }
 }
 
@@ -295,14 +328,22 @@ input[type=submit]:focus {
 }
 
 @media (max-width: 766px) {
-    #title .title__inner {
+    #title_sp .title__inner {
+        position: absolute;
+        top: 10%;
+        right: 12%;
         left: 12%;
     }
-    #title .title__inner h1 {
+    #title_sp .title__inner h1 {
         font-size: 150%;
+        vertical-align: bottom;
+        line-height: 1em;
     }
-    #title .title__inner p {
+    #title_sp .title__inner p {
         font-size: 15px;
+        padding: 0;
+        margin: 10px 10px 0 0;
+        line-height: 1.6em;
     }
 }
 
@@ -376,7 +417,7 @@ input[type=submit]:focus {
 #headernav nav ul li a {
     font-size: 18px;
     font-weight: bold;
-    font-family: 'geneiantique';
+    font-family: 'HomuraM-Heavy';
     display: block;
     color: black;
     padding: 2px 10px;
@@ -413,7 +454,7 @@ input[type=submit]:focus {
 .update h4 {
     padding-left: 0;
     margin-bottom: 1em;
-    font-family: 'genjyuugothic';
+    font-family: 'HomuraM-SemiLight';
     font-weight: bold;
     border-bottom: none;
 }
